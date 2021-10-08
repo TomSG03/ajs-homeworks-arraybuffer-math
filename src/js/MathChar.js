@@ -20,7 +20,10 @@ export default class MathChar extends Character {
     if (this.isStoned) {
       attack -= Math.log2(this.distance) * 5;
     }
-    return attack;
+    if (attack < 0) {
+      return 0;
+    }
+    return Math.round(attack);
   }
 
   set attack(value) {
